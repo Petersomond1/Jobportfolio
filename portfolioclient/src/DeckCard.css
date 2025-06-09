@@ -1,0 +1,154 @@
+/* DeckCard.css - Animated Deck Card Styles */
+
+.deck-card {
+    width: 120px;
+    height: 170px;
+    border-radius: 10px;
+    position: absolute;
+    cursor: pointer;
+    transition: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-origin: center bottom;
+  }
+  
+  .deck-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 255, 157, 0.3);
+    z-index: 999 !important;
+  }
+  
+  .deck-card-inner {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border: 2px solid #333;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    font-size: 14px;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Deck card corners */
+  .deck-card-corner {
+    align-self: flex-start;
+    text-align: center;
+    line-height: 1;
+  }
+  
+  .deck-card-corner.bottom {
+    align-self: flex-end;
+    transform: rotate(180deg);
+  }
+  
+  .deck-card-corner-value {
+    font-size: 16px;
+  }
+  
+  .deck-card-corner-suit {
+    font-size: 18px;
+  }
+  
+  .deck-card-corner-joker {
+    font-size: 12px;
+  }
+  
+  /* Deck card center */
+  .deck-card-center {
+    align-self: center;
+    text-align: center;
+  }
+  
+  .deck-card-center-symbol {
+    font-size: 32px;
+  }
+  
+  .deck-card-center-joker {
+    font-size: 24px;
+  }
+  
+  .deck-card-joker-label {
+    font-size: 8px;
+    margin-top: 4px;
+  }
+  
+  /* Color classes for deck cards */
+  .deck-card-red {
+    color: #dc2626;
+  }
+  
+  .deck-card-black {
+    color: #000;
+  }
+  
+  /* Stacked state positioning */
+  .deck-card.stacked {
+    transition: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  
+  /* Spread state positioning */
+  .deck-card.spread {
+    transition: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  
+  /* Animation states */
+  .deck-card.animating {
+    pointer-events: none;
+  }
+  
+  /* Special effects for jokers */
+  .deck-card.joker-red .deck-card-inner {
+    background: linear-gradient(135deg, #fff 0%, #fef2f2 100%);
+    border-color: #dc2626;
+  }
+  
+  .deck-card.joker-black .deck-card-inner {
+    background: linear-gradient(135deg, #fff 0%, #f9fafb 100%);
+    border-color: #000;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .deck-card {
+      width: 100px;
+      height: 140px;
+    }
+    
+    .deck-card-inner {
+      padding: 8px;
+    }
+    
+    .deck-card-center-symbol {
+      font-size: 24px;
+    }
+    
+    .deck-card-center-joker {
+      font-size: 20px;
+    }
+    
+    .deck-card-corner-value {
+      font-size: 14px;
+    }
+    
+    .deck-card-corner-suit {
+      font-size: 16px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .deck-card {
+      width: 80px;
+      height: 110px;
+    }
+    
+    .deck-card-center-symbol {
+      font-size: 20px;
+    }
+    
+    .deck-card-center-joker {
+      font-size: 16px;
+    }
+  }

@@ -1,197 +1,31 @@
-import React, { useState } from 'react';
-
-// Individual Playing Card Component
-const PlayingCard = ({ suit, value, title, description, isFlipped = false, onClick, skillLevel = 5 }) => {
-  const getSuitSymbol = (suit) => {
-    const symbols = {
-      hearts: '♥',
-      diamonds: '♦',
-      clubs: '♣',
-      spades: '♠'
-    };
-    return symbols[suit];
-  };
-
-  const getSuitColor = (suit) => {
-    return suit === 'hearts' || suit === 'diamonds' ? '#dc2626' : '#000';
-  };
-
-  const getCardValue = (value) => {
-    if (value === 1) return 'A';
-    if (value === 11) return 'J';
-    if (value === 12) return 'Q';
-    if (value === 13) return 'K';
-    return value.toString();
-  };
-
-  const getSuitTheme = (suit) => {
-    const themes = {
-      hearts: 'Frontend Skills',
-      diamonds: 'Projects',
-      clubs: 'Experience',
-      spades: 'Backend Skills'
-    };
-    return themes[suit];
-  };
-
-  return (
-    <div 
-      className={`playing-card ${isFlipped ? 'flipped' : ''}`}
-      onClick={onClick}
-      style={{
-        width: '140px',
-        height: '200px',
-        borderRadius: '12px',
-        position: 'relative',
-        cursor: 'pointer',
-        transformStyle: 'preserve-3d',
-        transition: 'all 0.6s ease',
-        margin: '15px'
-      }}
-    >
-      {/* Card Front */}
-      <div 
-        className="card-front"
-        style={{
-          position: 'absolute',
-          width: '100%',
-          height: '100%',
-          backfaceVisibility: 'hidden',
-          backgroundColor: '#fff',
-          border: '3px solid #333',
-          borderRadius: '12px',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-          padding: '12px',
-          boxShadow: '0 8px 16px rgba(0,0,0,0.3)',
-          color: getSuitColor(suit),
-          fontSize: '16px',
-          fontWeight: 'bold',
-          fontFamily: 'Arial, sans-serif'
-        }}
-      >
-        {/* Top corner */}
-        <div style={{ alignSelf: 'flex-start', textAlign: 'center', lineHeight: '1' }}>
-          <div style={{ fontSize: '18px' }}>{getCardValue(value)}</div>
-          <div style={{ fontSize: '20px' }}>{getSuitSymbol(suit)}</div>
-        </div>
-
-        {/* Center content */}
-        <div style={{ 
-          alignSelf: 'center', 
-          textAlign: 'center',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          height: '120px',
-          color: '#333'
-        }}>
-          <div style={{ fontSize: '36px', marginBottom: '8px' }}>{getSuitSymbol(suit)}</div>
-          <div style={{ fontSize: '10px', fontWeight: 'normal', opacity: 0.7 }}>
-            {getSuitTheme(suit)}
-          </div>
-        </div>
-
-        {/* Bottom corner (rotated) */}
-        <div style={{ 
-          alignSelf: 'flex-end', 
-          textAlign: 'center', 
-          lineHeight: '1',
-          transform: 'rotate(180deg)'
-        }}>
-          <div style={{ fontSize: '18px' }}>{getCardValue(value)}</div>
-          <div style={{ fontSize: '20px' }}>{getSuitSymbol(suit)}</div>
-        </div>
-      </div>
-
-      {/* Card Back - Portfolio Content */}
-      <div 
-        className="card-back"
-        style={{
-          position: 'absolute',
-          width: '100%',
-          height: '100%',
-          backfaceVisibility: 'hidden',
-          transform: 'rotateY(180deg)',
-          backgroundColor: 'var(--second-background)',
-          border: '3px solid var(--primary-color)',
-          borderRadius: '12px',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-          padding: '12px',
-          boxShadow: '0 8px 16px rgba(0,255,157,0.3)',
-          color: '#fff',
-          fontSize: '12px'
-        }}
-      >
-        <div style={{ textAlign: 'center' }}>
-          <div style={{ 
-            color: 'var(--primary-color)', 
-            fontSize: '14px', 
-            fontWeight: 'bold',
-            marginBottom: '8px'
-          }}>
-            {title}
-          </div>
-          <div style={{ 
-            fontSize: '10px', 
-            lineHeight: '1.4',
-            height: '60px',
-            overflow: 'hidden'
-          }}>
-            {description}
-          </div>
-        </div>
-
-        {/* Skill level indicator */}
-        <div style={{ textAlign: 'center' }}>
-          <div style={{ fontSize: '10px', marginBottom: '5px', opacity: 0.8 }}>
-            Skill Level
-          </div>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '2px' }}>
-            {[1,2,3,4,5].map(star => (
-              <span 
-                key={star}
-                style={{ 
-                  color: star <= skillLevel ? 'var(--primary-color)' : '#333',
-                  fontSize: '12px'
-                }}
-              >
-                ★
-              </span>
-            ))}
-          </div>
-        </div>
-
-        <div style={{ 
-          textAlign: 'center',
-          color: 'var(--primary-color)',
-          fontSize: '10px',
-          fontWeight: 'bold'
-        }}>
-          Mondayp
-        </div>
-      </div>
-
-      <style jsx>{`
-        .playing-card.flipped {
-          transform: rotateY(180deg);
-        }
-        .playing-card:hover {
-          transform: translateY(-10px) scale(1.05) ${isFlipped ? 'rotateY(180deg)' : ''};
-          box-shadow: 0 12px 24px rgba(0,255,157,0.4);
-        }
-      `}</style>
-    </div>
-  );
-};
+import React, { useState, useEffect } from 'react';
+import PlayingCard from './PlayingCard';
+import DeckCard from './DeckCard';
+import './Cards.css';
 
 // Main Cards Component
 const Cards = () => {
   const [flippedCards, setFlippedCards] = useState(new Set());
+  const [isDeckSpread, setIsDeckSpread] = useState(false);
+
+  // Deck cards data (4 Aces + 2 Jokers)
+  const deckCards = [
+    { suit: 'hearts', value: 1, title: 'Ace of Hearts', isJoker: false },
+    { suit: 'diamonds', value: 1, title: 'Ace of Diamonds', isJoker: false },
+    { suit: 'clubs', value: 1, title: 'Ace of Clubs', isJoker: false },
+    { suit: 'spades', value: 1, title: 'Ace of Spades', isJoker: false },
+    { title: 'Red Joker', isJoker: true, jokerColor: 'red' },
+    { title: 'Black Joker', isJoker: true, jokerColor: 'black' }
+  ];
+
+  // Auto-spread animation after component mounts
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsDeckSpread(true);
+    }, 1000); // Wait 1 second then spread
+
+    return () => clearTimeout(timer);
+  }, []);
 
   // Portfolio cards data
   const portfolioCards = [
@@ -230,52 +64,57 @@ const Cards = () => {
     setFlippedCards(newFlipped);
   };
 
+  const handleDeckClick = () => {
+    setIsDeckSpread(!isDeckSpread);
+  };
+
   return (
-    <section id="portfolio-cards" style={{
-      padding: '60px 5%',
-      backgroundColor: 'var(--third-background)',
-      textAlign: 'center'
-    }}>
-      <h1 className='header' style={{ marginBottom: '20px' }}>
+    <section id="portfolio-cards" className="portfolio-cards-section">
+      <h1 className="portfolio-header">
         <span>🎴 My Skills & Experience Deck</span>
       </h1>
-      <p style={{ 
-        color: 'white', 
-        fontSize: '1.2em', 
-        marginBottom: '40px',
-        maxWidth: '800px',
-        margin: '0 auto 40px'
-      }}>
-        Click any card to reveal detailed information about my skills and experience. Each suit represents a different aspect of my expertise.
+
+      {/* Animated Deck of Cards */}
+      <div className="deck-container">
+        <div 
+          className="deck_of_cards"
+          onClick={handleDeckClick}
+        >
+          {deckCards.map((card, index) => (
+            <DeckCard
+              key={index}
+              suit={card.suit}
+              value={card.value}
+              title={card.title}
+              isJoker={card.isJoker}
+              jokerColor={card.jokerColor}
+              index={index}
+              isSpread={isDeckSpread}
+              onClick={handleDeckClick}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Instructions for deck animation */}
+      <div className="deck-instructions">
+        <p>🎯 <strong>Click the deck above to {isDeckSpread ? 'stack' : 'spread'} the cards!</strong></p>
+      </div>
+
+      <p className="portfolio-description">
+        Click any card below to reveal detailed information about my skills and experience. Each suit represents a different aspect of my expertise.
       </p>
 
       {/* Suit Legend */}
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-        gap: '20px',
-        maxWidth: '800px',
-        margin: '0 auto 40px',
-        padding: '20px',
-        backgroundColor: 'rgba(0, 255, 157, 0.1)',
-        borderRadius: '15px',
-        border: '2px solid var(--primary-color)'
-      }}>
-        <div style={{ color: '#dc2626' }}>♥ <strong>Hearts:</strong> Frontend Skills</div>
-        <div style={{ color: '#dc2626' }}>♦ <strong>Diamonds:</strong> Projects</div>
-        <div style={{ color: '#000', backgroundColor: 'white', padding: '5px', borderRadius: '5px' }}>♣ <strong>Clubs:</strong> Experience</div>
-        <div style={{ color: '#000', backgroundColor: 'white', padding: '5px', borderRadius: '5px' }}>♠ <strong>Spades:</strong> Backend Skills</div>
+      <div className="suit-legend">
+        <div className="legend-item legend-hearts">♥ <strong>Hearts:</strong> Frontend Skills</div>
+        <div className="legend-item legend-diamonds">♦ <strong>Diamonds:</strong> Projects</div>
+        <div className="legend-item legend-clubs">♣ <strong>Clubs:</strong> Experience</div>
+        <div className="legend-item legend-spades">♠ <strong>Spades:</strong> Backend Skills</div>
       </div>
 
       {/* Cards Grid */}
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(170px, 1fr))',
-        gap: '20px',
-        maxWidth: '1200px',
-        margin: '0 auto',
-        justifyItems: 'center'
-      }}>
+      <div className="cards-grid">
         {portfolioCards.map((card) => {
           const cardId = `${card.suit}-${card.value}`;
           return (
@@ -294,11 +133,7 @@ const Cards = () => {
       </div>
 
       {/* Interactive Instructions */}
-      <div style={{
-        marginTop: '40px',
-        color: 'var(--primary-color)',
-        fontSize: '1.1em'
-      }}>
+      <div className="interactive-instructions">
         <p>💡 <strong>Tip:</strong> Hover over cards for preview, click to flip and see details!</p>
       </div>
     </section>

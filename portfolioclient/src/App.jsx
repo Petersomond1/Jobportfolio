@@ -273,7 +273,7 @@ function App() {
 
         <hr className="hr" style={{ marginTop: '25px', marginBottom: '25px' }} />
         
-        <section>
+        {/* <section>
           <div className="techs-Services-container">
             <div className="box">
               <h1><span>Web Design</span></h1>
@@ -296,7 +296,7 @@ function App() {
               <img src="./assets/pix.JPG" alt="" />
             </div> 
           </div>
-        </section>
+        </section> */}
 
         <hr className="hr" style={{ marginTop: '25px', marginBottom: '25px' }} />
         
