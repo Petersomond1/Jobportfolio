@@ -1,0 +1,695 @@
+/* Book.css - 3D Portfolio Book and Library Styles */
+
+/* ===========================================
+   MAIN CONTAINER & LAYOUT
+   =========================================== */
+
+   .book-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Georgia', 'Times New Roman', serif;
+  }
+  
+  .book-header {
+    margin-bottom: 20px;
+  }
+  
+  .view-toggle {
+    background: linear-gradient(45deg, #4f46e5, #7c3aed);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .view-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4);
+  }
+  
+  /* ===========================================
+     FLIPBOOK WRAPPER & 3D EFFECTS
+     =========================================== */
+  
+  .flipbook-wrapper {
+    perspective: 1500px;
+    perspective-origin: center center;
+  }
+  
+  .flipbook {
+    margin: 0 auto;
+    box-shadow: 
+      0 0 0 1px rgba(0,0,0,0.1),
+      0 10px 40px rgba(0,0,0,0.4),
+      0 20px 80px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    transform: rotateX(5deg) rotateY(-5deg);
+    transition: transform 0.5s ease;
+  }
+  
+  .flipbook:hover {
+    transform: rotateX(2deg) rotateY(-2deg) scale(1.02);
+  }
+  
+  /* ===========================================
+     PAGE STYLES
+     =========================================== */
+  
+  .page {
+    background: #fefefe;
+    border: 1px solid #e0e0e0;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.05);
+  }
+  
+  .page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 80%, rgba(120,119,198,0.03) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(120,119,198,0.02) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  
+  /* ===========================================
+     HARD COVER STYLES
+     =========================================== */
+  
+  .hard-cover {
+    background: linear-gradient(135deg, #2d1b69 0%, #11998e 100%);
+    color: white;
+    font-weight: bold;
+    position: relative;
+  }
+  
+  .hard-cover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 2px,
+        rgba(255,255,255,0.03) 2px,
+        rgba(255,255,255,0.03) 4px
+      );
+    pointer-events: none;
+  }
+  
+  .front-cover {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+  
+  .back-cover {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  }
+  
+  /* ===========================================
+     COVER CONTENT
+     =========================================== */
+  
+  .cover-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px 30px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .cover-title h1 {
+    font-size: 2.5rem;
+    margin: 0 0 10px 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    font-family: 'Georgia', serif;
+  }
+  
+  .cover-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    font-style: italic;
+    margin-bottom: 20px;
+  }
+  
+  .cover-image {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+  }
+  
+  .cover-image img {
+    max-width: 80%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    border: 3px solid rgba(255,255,255,0.2);
+  }
+  
+  .cover-author {
+    font-size: 1.3rem;
+    margin-top: 20px;
+  }
+  
+  .cover-ornament {
+    font-size: 2rem;
+    margin-top: 15px;
+    animation: twinkle 2s ease-in-out infinite alternate;
+  }
+  
+  @keyframes twinkle {
+    0% { opacity: 0.5; transform: scale(1); }
+    100% { opacity: 1; transform: scale(1.1); }
+  }
+  
+  /* ===========================================
+     CONTENT PAGE STYLES
+     =========================================== */
+  
+  .content-page {
+    background: #fdfdf8;
+    background-image: 
+      linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
+      linear-gradient(#eee .1em, transparent .1em);
+    background-size: 100% 1.2em;
+  }
+  
+  .page-content {
+    padding: 40px 35px;
+    height: calc(100% - 80px);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #4f46e5;
+    padding-bottom: 10px;
+  }
+  
+  .page-header h2 {
+    margin: 0;
+    color: #2d1b69;
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
+  
+  .page-ornament {
+    color: #4f46e5;
+    font-size: 1.2rem;
+  }
+  
+  .content-image {
+    margin: 20px 0;
+    text-align: center;
+  }
+  
+  .content-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border: 2px solid #e0e7ff;
+  }
+  
+  .content-text {
+    flex: 1;
+    margin: 20px 0;
+  }
+  
+  .content-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #374151;
+    text-align: justify;
+    margin: 0;
+  }
+  
+  .skills-section {
+    margin-top: 25px;
+  }
+  
+  .skills-section h4 {
+    margin: 0 0 15px 0;
+    color: #4f46e5;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+  
+  .skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .skill-tag {
+    background: linear-gradient(45deg, #4f46e5, #7c3aed);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3);
+  }
+  
+  .page-number {
+    position: absolute;
+    bottom: 20px;
+    right: 35px;
+    font-size: 0.9rem;
+    color: #6b7280;
+    font-style: italic;
+  }
+  
+  /* ===========================================
+     TABLE OF CONTENTS
+     =========================================== */
+  
+  .toc-list {
+    margin-top: 30px;
+  }
+  
+  .toc-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+  }
+  
+  .toc-title {
+    color: #374151;
+    font-weight: 500;
+    min-width: 200px;
+  }
+  
+  .toc-dots {
+    flex: 1;
+    color: #9ca3af;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0 10px;
+  }
+  
+  .toc-page {
+    color: #4f46e5;
+    font-weight: 600;
+    min-width: 30px;
+    text-align: right;
+  }
+  
+  /* ===========================================
+     BACK COVER STYLES
+     =========================================== */
+  
+  .back-cover-text {
+    text-align: center;
+  }
+  
+  .back-cover-text h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  }
+  
+  .back-cover-text p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    opacity: 0.95;
+  }
+  
+  .contact-info {
+    margin: 30px 0;
+  }
+  
+  .contact-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+    font-size: 1rem;
+  }
+  
+  .contact-item span {
+    margin-right: 10px;
+    font-size: 1.2rem;
+  }
+  
+  .back-cover-quote {
+    margin-top: 40px;
+    font-style: italic;
+    opacity: 0.9;
+    font-size: 1rem;
+  }
+  
+  .back-cover-logo {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .logo-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    border: 3px solid rgba(255,255,255,0.3);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  }
+  
+  /* ===========================================
+     LIBRARY VIEW STYLES
+     =========================================== */
+  
+  .library-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #8b5a3c 0%, #6d4c41 100%);
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Georgia', serif;
+  }
+  
+  .library-header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  
+  .library-header h1 {
+    color: #fff;
+    font-size: 3rem;
+    margin: 0 0 20px 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  }
+  
+  .bookshelf {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    height: 300px;
+    perspective: 1000px;
+  }
+  
+  .shelf-wood {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background: linear-gradient(to bottom, #8d6e63, #5d4037);
+    border-radius: 0 0 10px 10px;
+    box-shadow: 
+      0 5px 15px rgba(0,0,0,0.3),
+      inset 0 2px 5px rgba(255,255,255,0.1);
+  }
+  
+  .shelf-wood::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(to bottom, #a1887f, #8d6e63);
+    border-radius: 5px 5px 0 0;
+  }
+  
+  .books-row {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 5px;
+    align-items: flex-end;
+  }
+  
+  .book-spine {
+    width: 60px;
+    height: 240px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    transform-origin: bottom center;
+    background: linear-gradient(to right, 
+      hsl(var(--book-hue), 70%, 45%), 
+      hsl(var(--book-hue), 70%, 55%), 
+      hsl(var(--book-hue), 70%, 45%)
+    );
+    border-radius: 3px 3px 0 0;
+    box-shadow: 
+      2px 0 5px rgba(0,0,0,0.2),
+      inset -2px 0 3px rgba(0,0,0,0.1),
+      inset 2px 0 3px rgba(255,255,255,0.1);
+  }
+  
+  .book-spine:hover {
+    transform: translateY(-10px) rotateY(15deg);
+    box-shadow: 
+      2px 5px 15px rgba(0,0,0,0.3),
+      inset -2px 0 3px rgba(0,0,0,0.1),
+      inset 2px 0 3px rgba(255,255,255,0.1);
+  }
+  
+  .book-spine::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 20px,
+      rgba(0,0,0,0.05) 20px,
+      rgba(0,0,0,0.05) 22px
+    );
+    border-radius: 3px 3px 0 0;
+  }
+  
+  .spine-text {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%) rotate(90deg);
+    transform-origin: center;
+    width: 200px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    white-space: nowrap;
+  }
+  
+  .spine-title {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .spine-volume {
+    display: block;
+    font-size: 12px;
+    opacity: 0.9;
+    margin-bottom: 10px;
+  }
+  
+  .spine-author {
+    display: block;
+    font-size: 10px;
+    opacity: 0.8;
+  }
+  
+  .shelf-shadow {
+    position: absolute;
+    bottom: -10px;
+    left: 10%;
+    right: 10%;
+    height: 10px;
+    background: radial-gradient(ellipse, rgba(0,0,0,0.2), transparent);
+    border-radius: 50%;
+  }
+  
+  .library-footer {
+    margin-top: 50px;
+    text-align: center;
+  }
+  
+  .library-footer p {
+    color: #fff;
+    font-size: 1.2rem;
+    opacity: 0.9;
+    font-style: italic;
+  }
+  
+  /* ===========================================
+     BOOK CONTROLS
+     =========================================== */
+  
+  .book-controls {
+    margin-top: 30px;
+    text-align: center;
+  }
+  
+  .flip-instruction {
+    background: rgba(255,255,255,0.9);
+    padding: 15px 25px;
+    border-radius: 25px;
+    font-size: 1rem;
+    color: #374151;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  
+  /* ===========================================
+     RESPONSIVE DESIGN
+     =========================================== */
+  
+  @media (max-width: 768px) {
+    .book-container {
+      padding: 10px;
+    }
+    
+    .flipbook {
+      transform: none;
+    }
+    
+    .cover-title h1 {
+      font-size: 2rem;
+    }
+    
+    .page-content {
+      padding: 25px 20px;
+    }
+    
+    .page-header h2 {
+      font-size: 1.5rem;
+    }
+    
+    .library-header h1 {
+      font-size: 2.2rem;
+    }
+    
+    .books-row {
+      gap: 3px;
+    }
+    
+    .book-spine {
+      width: 45px;
+      height: 180px;
+    }
+    
+    .spine-text {
+      width: 160px;
+    }
+    
+    .spine-title {
+      font-size: 11px;
+    }
+    
+    .spine-volume {
+      font-size: 9px;
+    }
+    
+    .spine-author {
+      font-size: 8px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .flipbook-wrapper {
+      perspective: none;
+    }
+    
+    .books-row {
+      gap: 2px;
+    }
+    
+    .book-spine {
+      width: 35px;
+      height: 140px;
+    }
+    
+    .spine-text {
+      width: 120px;
+    }
+    
+    .cover-title h1 {
+      font-size: 1.8rem;
+    }
+    
+    .library-header h1 {
+      font-size: 1.8rem;
+    }
+  }
+  
+  /* ===========================================
+     ACCESSIBILITY
+     =========================================== */
+  
+  @media (prefers-reduced-motion: reduce) {
+    .flipbook,
+    .book-spine,
+    .cover-ornament,
+    .view-toggle {
+      animation: none;
+      transition: none;
+    }
+  }
+  
+  /* ===========================================
+     PRINT STYLES
+     =========================================== */
+  
+  @media print {
+    .book-container {
+      background: white;
+    }
+    
+    .view-toggle,
+    .book-controls {
+      display: none;
+    }
+    
+    .flipbook {
+      box-shadow: none;
+      transform: none;
+    }
+  }

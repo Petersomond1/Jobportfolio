@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import './App.css';
-import Cards from './Cards'; // Import the Cards component
+import Cards from './Cards';
+import Book from './Book';
 
 function App() {
   const [showFullscreenVideo, setShowFullscreenVideo] = useState(true);
@@ -271,7 +272,7 @@ function App() {
           <div className="bttn">Contact</div>
         </section>
 
-        <hr className="hr" style={{ marginTop: '25px', marginBottom: '25px' }} />
+        {/* <hr className="hr" style={{ marginTop: '25px', marginBottom: '25px' }} /> */}
         
         {/* <section>
           <div className="techs-Services-container">
@@ -302,6 +303,8 @@ function App() {
         
         {/* Portfolio Cards Section - Now using the Cards component */}
         <Cards />
+        <hr className="hr" style={{ marginTop: '25px', marginBottom: '25px' }} />
+        <Book/>
 
         <hr className="hr" style={{ marginTop: '25px', marginBottom: '25px' }} />
         
