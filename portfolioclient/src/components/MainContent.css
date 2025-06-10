@@ -1,0 +1,338 @@
+/* Main Content Styles */
+.content-body {
+    width: 100%;
+    min-height: 100vh;
+    background: var(--second-background);
+    color: white;
+  }
+  
+  /* Home Section Styles */
+  .home {
+    padding: 100px 10% 80px;
+    text-align: center;
+    background: linear-gradient(135deg, var(--second-background) 0%, rgba(0, 0, 0, 0.8) 100%);
+  }
+  
+  .welcome h3 {
+    font-size: 2.5em;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .hr {
+    width: 80%;
+    margin: 30px auto;
+    border: none;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+  }
+  
+  .profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 4px solid var(--primary-color);
+    box-shadow: 0 10px 30px rgba(0, 255, 157, 0.3);
+    margin: 30px 0;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  .profile-image:hover {
+    transform: scale(1.05);
+  }
+  
+  .home h2 {
+    font-size: 3em;
+    margin: 30px 0;
+    color: white;
+  }
+  
+  .home h2 .name {
+    color: var(--primary-color);
+  }
+  
+  .intro, .intro2 {
+    max-width: 800px;
+    margin: 0 auto 30px;
+    line-height: 1.6;
+  }
+  
+  .intro h3, .intro2 h3 {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    font-weight: normal;
+  }
+  
+  .bttn {
+    background: var(--primary-color);
+    color: black;
+    padding: 15px 40px;
+    border-radius: 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    display: inline-block;
+    margin: 20px 10px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 15px rgba(0, 255, 157, 0.3);
+  }
+  
+  .bttn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 255, 157, 0.5);
+  }
+  
+  /* About Section Styles */
+  .about-box {
+    padding: 80px 10%;
+    background: rgba(0, 0, 0, 0.3);
+    position: relative;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  
+  .about-info h2 {
+    font-size: 2.5em;
+    color: var(--primary-color);
+    margin-bottom: 40px;
+    text-align: center;
+    grid-column: 1 / -1;
+  }
+  
+  .skills-heading {
+    margin: 30px 0 20px;
+  }
+  
+  .skills-heading h3 {
+    font-size: 1.5em;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+  
+  .skills li, .skills span {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px 15px;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 255, 157, 0.3);
+    transition: all 0.3s ease;
+    list-style: none;
+  }
+  
+  .skills li:hover, .skills span:hover {
+    background: rgba(0, 255, 157, 0.2);
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+  }
+  
+  .skills ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .about-image {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 15px;
+    border: 3px solid var(--primary-color);
+    box-shadow: 0 10px 30px rgba(0, 255, 157, 0.3);
+    justify-self: center;
+  }
+  
+  /* Techs & Services Section Styles */
+  .techs-Services {
+    padding: 80px 10%;
+    background: var(--second-background);
+  }
+  
+  .techs-Services .header {
+    text-align: center;
+    font-size: 3em;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .skills-smallheader {
+    text-align: center;
+    font-size: 1.3em;
+    color: white;
+    margin-bottom: 40px;
+    opacity: 0.9;
+  }
+  
+  .techs-Services-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+  }
+  
+  .box {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 15px;
+    border: 2px solid rgba(0, 255, 157, 0.2);
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  
+  .box:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary-color);
+    box-shadow: 0 15px 40px rgba(0, 255, 157, 0.2);
+  }
+  
+  .box h1 {
+    color: var(--primary-color);
+    font-size: 1.8em;
+    margin-bottom: 20px;
+  }
+  
+  .box p {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  
+  .box img {
+    width: 100%;
+    max-width: 200px;
+    border-radius: 10px;
+    border: 2px solid var(--primary-color);
+  }
+  
+  /* Mobile Responsiveness */
+  @media (max-width: 768px) {
+    .content-body {
+      padding: 0;
+    }
+  
+    .home {
+      padding: 80px 5% 60px;
+    }
+  
+    .welcome h3 {
+      font-size: 2em;
+    }
+  
+    .home h2 {
+      font-size: 2.2em;
+    }
+  
+    .profile-image {
+      width: 150px;
+      height: 150px;
+    }
+  
+    .intro h3, .intro2 h3 {
+      font-size: 1.1em;
+    }
+  
+    .bttn {
+      padding: 12px 30px;
+      font-size: 1em;
+      margin: 15px 5px;
+    }
+  
+    .about-box {
+      grid-template-columns: 1fr;
+      padding: 60px 5%;
+      gap: 30px;
+    }
+  
+    .about-info h2 {
+      font-size: 2em;
+    }
+  
+    .skills-heading h3 {
+      font-size: 1.3em;
+    }
+  
+    .techs-Services {
+      padding: 60px 5%;
+    }
+  
+    .techs-Services .header {
+      font-size: 2.5em;
+    }
+  
+    .skills-smallheader {
+      font-size: 1.1em;
+    }
+  
+    .techs-Services-container {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+  
+    .box {
+      padding: 20px;
+    }
+  
+    .box h1 {
+      font-size: 1.5em;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .home {
+      padding: 60px 3% 40px;
+    }
+  
+    .welcome h3 {
+      font-size: 1.8em;
+    }
+  
+    .home h2 {
+      font-size: 1.8em;
+    }
+  
+    .profile-image {
+      width: 120px;
+      height: 120px;
+    }
+  
+    .intro h3, .intro2 h3 {
+      font-size: 1em;
+    }
+  
+    .bttn {
+      padding: 10px 25px;
+      font-size: 0.9em;
+    }
+  
+    .about-box {
+      padding: 40px 3%;
+    }
+  
+    .about-info h2 {
+      font-size: 1.8em;
+    }
+  
+    .techs-Services {
+      padding: 40px 3%;
+    }
+  
+    .techs-Services .header {
+      font-size: 2em;
+    }
+  }

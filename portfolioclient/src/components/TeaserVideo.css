@@ -1,0 +1,75 @@
+/* Teaser Video Styles */
+.fullscreen-intro-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.95);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    transition: opacity 0.8s ease-out;
+  }
+  
+  .teaser-video {
+    max-width: 90%;
+    max-height: 80%;
+    width: auto;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(0, 255, 157, 0.3);
+    border: 3px solid var(--primary-color);
+  }
+  
+  .teaser-overlay-text {
+    color: white;
+    text-align: center;
+    margin-top: 30px;
+    font-size: 18px;
+    opacity: 0.9;
+    animation: pulse 2s infinite;
+  }
+  
+  .teaser-welcome {
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .teaser-instruction {
+    font-size: 16px;
+    opacity: 0.8;
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 0.9;
+    }
+    50% {
+      opacity: 0.6;
+    }
+  }
+  
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .teaser-video {
+      max-width: 95%;
+      max-height: 70%;
+    }
+  
+    .teaser-overlay-text {
+      font-size: 16px;
+      margin-top: 20px;
+    }
+  
+    .teaser-welcome {
+      font-size: 18px;
+    }
+  
+    .teaser-instruction {
+      font-size: 14px;
+    }
+  }

@@ -1,0 +1,228 @@
+/* Contact and Footer Styles */
+.contact-footer-wrapper {
+    width: 100%;
+  }
+  
+  /* Contact Section Styles */
+  .contact-section {
+    padding: 80px 10% 60px;
+    background: var(--second-background);
+    color: white;
+  }
+  
+  .contact-section .header {
+    text-align: center;
+    font-size: 3em;
+    margin-bottom: 50px;
+    color: var(--primary-color);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .contact-section .header span {
+    position: relative;
+  }
+  
+  .contact-section .header span::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--primary-color);
+    border-radius: 2px;
+  }
+  
+  .contact-section form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .input-box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .input-box span {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: var(--primary-color);
+  }
+  
+  .input-box input,
+  .input-box textarea {
+    padding: 15px 20px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    font-size: 1em;
+    transition: all 0.3s ease;
+    outline: none;
+  }
+  
+  .input-box input:focus,
+  .input-box textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 15px rgba(0, 255, 157, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  .input-box input::placeholder,
+  .input-box textarea::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+  }
+  
+  .input-box textarea {
+    min-height: 120px;
+    resize: vertical;
+    font-family: inherit;
+  }
+  
+  .btttn {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .btttn input[type="submit"] {
+    background: var(--primary-color);
+    color: black;
+    padding: 15px 50px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 15px rgba(0, 255, 157, 0.3);
+  }
+  
+  .btttn input[type="submit"]:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 255, 157, 0.5);
+  }
+  
+  /* Footer Section Styles */
+  .footer-section {
+    background: rgba(0, 0, 0, 0.9);
+    padding: 40px 10%;
+    color: white;
+    border-top: 2px solid var(--primary-color);
+  }
+  
+  .col-left {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .col-box {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 200px;
+  }
+  
+  .footer-label {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--primary-color);
+  }
+  
+  .footer-info {
+    font-size: 1em;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.5;
+  }
+  
+  .footer-info a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-info a:hover {
+    color: var(--primary-color);
+  }
+  
+  .col-right {
+    margin-top: 20px;
+    /* Space for additional footer content */
+  }
+  
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .contact-section {
+      padding: 60px 5% 40px;
+    }
+  
+    .contact-section .header {
+      font-size: 2.5em;
+      margin-bottom: 40px;
+    }
+  
+    .contact-section form {
+      gap: 25px;
+    }
+  
+    .input-box span {
+      font-size: 1.1em;
+    }
+  
+    .input-box input,
+    .input-box textarea {
+      padding: 12px 15px;
+    }
+  
+    .btttn input[type="submit"] {
+      padding: 12px 40px;
+      font-size: 1.1em;
+    }
+  
+    .footer-section {
+      padding: 30px 5%;
+    }
+  
+    .col-left {
+      flex-direction: column;
+      gap: 25px;
+    }
+  
+    .col-box {
+      min-width: auto;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .contact-section .header {
+      font-size: 2em;
+    }
+  
+    .input-box input,
+    .input-box textarea {
+      padding: 10px 12px;
+      font-size: 0.9em;
+    }
+  
+    .btttn input[type="submit"] {
+      padding: 10px 30px;
+      font-size: 1em;
+    }
+  
+    .footer-label {
+      font-size: 1.1em;
+    }
+  
+    .footer-info {
+      font-size: 0.9em;
+    }
+  }
