@@ -257,7 +257,7 @@ function Book() {
                         if (index % 2 === 0) {
                             const nextItem = portfolioData[index + 1];
                             pairs.push(
-                                <React.Fragment key={`pair-${index}`}>
+                                <div key={`pair-${index}`}>
                                     {/* Left Page */}
                                     <div className="page content-page left-page">
                                         <div className="page-content">
@@ -321,7 +321,7 @@ function Book() {
                                             </div>
                                         </div>
                                     )}
-                                </React.Fragment>
+                                </div>
                             );
                         }
                         return pairs;
