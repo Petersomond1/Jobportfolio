@@ -181,7 +181,7 @@ function Book() {
             <div className="flipbook-wrapper">
                 <HTMLFlipBook 
                     ref={flipBookRef}
-                    width={550} 
+                    width={700} 
                     height={800} 
                     maxShadowOpacity={0.5} 
                     drawShadow={true} 
@@ -200,14 +200,14 @@ function Book() {
                     showPageCorners={true}
                     disableFlipByClick={false}
                     onFlip={handleFlip}
-                    onChangeOrientation={() => {
-                        // Handle orientation change if needed
-                    }}
 
-                    onPageChange={(e) => {
-                        // Handle page change if needed
-                        console.log(`Page changed to: ${e.data}`);
-                    }}
+                    
+                      // ref={flipBookRef}
+                    // width={700}
+                    // height={780}
+                    // size="fixed"
+                    // showCover={true}
+                    // className="flipbook open-book"
                 >
                     {/* Welcome Page (Left side when opened) */}
                     <div className="page content-page left-page">
