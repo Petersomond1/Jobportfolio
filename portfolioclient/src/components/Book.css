@@ -1,11 +1,56 @@
+/* ensure the two halves touch exactly at the spine */
+.flipbook.open-book {
+  display: flex;      /* lay pages in one row */
+  gap: 0;             /* NO space between them */
+}
+
+/* strip out any default margin on pages */
+.page,
+.page-fixed-size,
+.flipbook .page-fixed-size,
+.stf__item .page-fixed-size,
+.stf__item .page {
+  width: 700px !important;
+  height: 780px !important;
+  margin: 0 !important;
+  box-sizing: border-box;
+}
+
+/* force the internal library items to match */
+.flipbook .stf__item,
+.stf__parent .stf__item,
+.stf__wrapper .stf__item,
+.stf__block .stf__item {
+  width: 700px !important;
+  height: 780px !important;
+}
+
+/* remove any extra gutter on wrapper */
+.flipbook-wrapper {
+  gap: 0;
+}
+
+/* optional: reinforce spine shadows */
+.left-page  { box-shadow: inset -5px 0 15px rgba(0,0,0,0.2); }
+.right-page { box-shadow: inset  5px 0 15px rgba(0,0,0,0.2); }
+
+
+
+
 /* Book.css – Essential sizing & layout only */
 
 /* Center wrapper */
 .book-container {
+  /* display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px; */
+
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  height: 100vh;
+  background: #f3f4f6;
 }
 
 /* Flipbook perspective */
@@ -44,8 +89,13 @@
 
 /* Closed‐book dimensions */
 .closed-book {
-  width: 700px;
+  /* width: 700px;
   height: 780px;
+  cursor: pointer; */
+
+  width: 1400px;
+  height: 780px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
   cursor: pointer;
 }
 
@@ -200,6 +250,11 @@
   transition: transform 0.5s ease;
   position: relative;
   transform-origin: center bottom;
+
+  min-width: 1400px;
+  min-height: 780px;
+  perspective: 2000px;
+  overflow: visible;
 }
 
 .flipbook.open-book:hover {
@@ -276,11 +331,13 @@
 .left-page {
   border-right: none;
   border-radius: 6px 0 0 6px;
+  box-shadow: inset -5px 0 15px rgba(0,0,0,0.2);
 }
 
 .right-page {
   border-left: none;
   border-radius: 0 6px 6px 0;
+  box-shadow: inset 5px 0 15px rgba(0,0,0,0.2);
 }
 
 /* Subtle gutter shadow for open book effect */
@@ -524,11 +581,13 @@
 .front-cover {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border-radius: 6px 0 0 6px;
+  /* background: #2d1b69; */
 }
 
 .back-cover {
   background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
   border-radius: 0 6px 6px 0;
+  /* background: #2d1b69; */
 }
 
 .cover-content {

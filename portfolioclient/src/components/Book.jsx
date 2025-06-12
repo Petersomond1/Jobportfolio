@@ -7,6 +7,8 @@ function Book() {
     const [isLibraryView, setIsLibraryView] = useState(false);
     const [isBookClosed, setIsBookClosed] = useState(true);
     const flipBookRef = useRef();
+    // const [closed, setClosed] = useState(true);
+    // const bookRef = useRef();
 
     const portfolioData = [
         {
@@ -180,20 +182,31 @@ function Book() {
             
             <div className="flipbook-wrapper">
                 <HTMLFlipBook 
+                    //   ref={bookRef}
+                      width={1400}
+                      height={780}
+                    //   size="fixed"
+                    useLandscape={true}
+                      usePortrait={false}
+                      showCover={true}
+                      className="flipbook open-book"
+                    //   onFlip={(e) => e.data === 0 && setClosed(true)}
+
                     ref={flipBookRef}
-                    width={700} 
-                    height={800} 
+                    // width={700} 
+                    // height={800} 
                     maxShadowOpacity={0.5} 
                     drawShadow={true} 
-                    showCover={true}
+                    // showCover={true}
                     mobileScrollSupport={true} 
-                    size='fixed'
-                    className="flipbook open-book"
+                    size='stretch' 
+                    // className="flipbook open-book"
                     startPage={0}
                     flippingTime={800}
-                    usePortrait={true} // Use portrait mode for better mobile experience
+                    // usePortrait={true} // Use portrait mode for better mobile experience
                     startZIndex={0}
-                    autoSize={false}
+                    autoSize={true}  
+                    // autoSize={false}
                     clickEventForward={true}
                     useMouseEvents={true}
                     swipeDistance={30}
@@ -201,7 +214,7 @@ function Book() {
                     disableFlipByClick={false}
                     onFlip={handleFlip}
 
-                    
+
                       // ref={flipBookRef}
                     // width={700}
                     // height={780}
@@ -236,7 +249,10 @@ function Book() {
                             <h2>📋 Table of Contents</h2>
                             <div className="toc-list">
                                 {portfolioData.map((item, index) => (
-                                    <div key={index} className="toc-item">
+                                    <div key={index}
+                                    //  className="toc-item" 
+                                       className={index % 2 === 0 ? 'page left-page' : 'page right-page'}
+                                       >
                                         <span className="toc-title">{item.title}</span>
                                         <span className="toc-dots">........................</span>
                                         <span className="toc-page">{index + 4}</span>

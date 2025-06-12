@@ -7,6 +7,8 @@ import TeaserVideo from './components/TeaserVideo';
 import IntroVideo from './components/IntroVideo';
 import MainContent from './components/MainContent';
 import ContactFooter from './components/ContactFooter';
+import Cards from './components/Cards';
+import Book from './components/Book.jsx';
 
 function App() {
   const [showFullscreenVideo, setShowFullscreenVideo] = useState(true);
@@ -53,7 +55,8 @@ function App() {
 
       {/* Introduction Video Component */}
       <IntroVideo videoTransitioned={videoTransitioned} />
-
+      <Cards />
+      <Book/>
       {/* Main Content Component */}
       <MainContent videoTransitioned={videoTransitioned} />
 
