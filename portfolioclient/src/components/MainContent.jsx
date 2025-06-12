@@ -1,6 +1,6 @@
 import React from 'react';
-// import Cards from './Cards';
-// import Book from './Book';
+import Cards from './Cards';
+import Book from './Book';
 import './MainContent.css';
 
 const MainContent = ({ videoTransitioned }) => {
@@ -38,9 +38,9 @@ const MainContent = ({ videoTransitioned }) => {
       <hr className="hr" style={{ marginTop: '25px', marginBottom: '25px' }} />
       
       {/* Portfolio Cards Section */}
-      {/* <Cards /> */}
+      <Cards />
       <hr className="hr" style={{ marginTop: '25px', marginBottom: '25px' }} />
-      {/* <Book/> */}
+      <Book/>
 
       <hr className="hr" style={{ marginTop: '25px', marginBottom: '25px' }} />
       

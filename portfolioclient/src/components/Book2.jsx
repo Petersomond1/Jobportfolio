@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import HTMLFlipBook from 'react-pageflip';
-import './Book.css';
+import './Book2.css';
 
 const portfolioData = [
     {
@@ -83,13 +83,13 @@ function Book() {
             <div className="book-wrapper">
                 <HTMLFlipBook
                     ref={bookRef}
-                    width={600}
-                    height={750}
+                    width={400}
+                    height={500}
                     size="fixed"
-                    minWidth={600}
-                    maxWidth={600}
-                    minHeight={750}
-                    maxHeight={750}
+                    minWidth={400}
+                    maxWidth={400}
+                    minHeight={500}
+                    maxHeight={500}
                     maxShadowOpacity={0.5}
                     showCover={true}
                     mobileScrollSupport={true}
