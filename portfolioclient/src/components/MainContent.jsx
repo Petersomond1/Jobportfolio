@@ -2,6 +2,7 @@ import React from 'react';
 import Cards from './Cards';
 import Book from './Book';
 import './MainContent.css';
+import '../App.css'; 
 
 const MainContent = ({ videoTransitioned }) => {
   if (!videoTransitioned) return null;
@@ -40,7 +41,9 @@ const MainContent = ({ videoTransitioned }) => {
       {/* Portfolio Cards Section */}
       <Cards />
       <hr className="hr" style={{ marginTop: '25px', marginBottom: '25px' }} />
+      {/* <div className='container'> */}
       <Book/>
+      {/* </div> */}
 
       <hr className="hr" style={{ marginTop: '25px', marginBottom: '25px' }} />
       

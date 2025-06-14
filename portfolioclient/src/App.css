@@ -176,3 +176,29 @@ a {
     padding: 0 10px;
   }
 }
+
+body html{
+  height: 100dvh;
+  width: 100dvw;
+  background: #0e1a26;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* This Root and container here distorts the book and the introvideo. still testing */
+/* #root {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+} */
