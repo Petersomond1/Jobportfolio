@@ -72,7 +72,7 @@
 /* Portfolio Book - Large Fixed Dimensions */
 .portfolio-book {
   margin: 0 auto;
-  /* commented this so as to remove an underlay carpet by left of book */
+  /* commented this out so as to remove an underlay carpet or container by left of book */
   /* box-shadow: 
     0 0 0 2px rgba(0,0,0,0.1),
     0 30px 60px rgba(0,0,0,0.3),

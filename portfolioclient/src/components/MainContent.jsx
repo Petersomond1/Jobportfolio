@@ -1,11 +1,28 @@
 import React from 'react';
 import Cards from './Cards';
 import Book from './Book';
+import Library from './Library';
 import './MainContent.css';
 import '../App.css'; 
 
 const MainContent = ({ videoTransitioned }) => {
   if (!videoTransitioned) return null;
+
+
+   // Handle book click to scroll to Book1 section
+   const handleBookClick = (bookIndex) => {
+    const bookSection = document.getElementById('book-section');
+    if (bookSection) {
+      bookSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+  // Handle library click to scroll to library section
+  const handleLibraryClick = () => {
+    const librarySection = document.getElementById('library-section');
+    if (librarySection) {
+      librarySection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };  
 
   return (
     <div className='content-body'>
@@ -41,6 +58,10 @@ const MainContent = ({ videoTransitioned }) => {
       {/* Portfolio Cards Section */}
       <Cards />
       <hr className="hr" style={{ marginTop: '25px', marginBottom: '25px' }} />
+       {/* Library Section */}
+       <Library onBookClick={handleBookClick} />
+      <hr className="hr" style={{ marginTop: '25px', marginBottom: '25px' }} />
+     
       {/* <div className='container'> */}
       <Book/>
       {/* </div> */}
