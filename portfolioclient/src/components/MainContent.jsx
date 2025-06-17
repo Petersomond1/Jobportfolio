@@ -4,6 +4,7 @@ import Book from './Book';
 import Library from './Library';
 import './MainContent.css';
 import '../App.css'; 
+import Book3d from "../components43d/Book3d"; // Import the 3D book component
 
 const MainContent = ({ videoTransitioned }) => {
   if (!videoTransitioned) return null;
@@ -61,7 +62,11 @@ const MainContent = ({ videoTransitioned }) => {
        {/* Library Section */}
        <Library onBookClick={handleBookClick} />
       <hr className="hr" style={{ marginTop: '25px', marginBottom: '25px' }} />
-     
+     <section style={{height: '650px'}} id='book-section'>
+     <Book3d/>
+
+     </section>
+      <hr className="hr" style={{ marginTop: '25px', marginBottom: '25px' }} />
       {/* <div className='container'> */}
       <Book/>
       {/* </div> */}

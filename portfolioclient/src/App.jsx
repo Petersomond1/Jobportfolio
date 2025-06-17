@@ -7,7 +7,7 @@ import TeaserVideo from "./components/TeaserVideo";
 import IntroVideo from "./components/IntroVideo";
 import MainContent from "./components/MainContent";
 import ContactFooter from "./components/ContactFooter";
-import Book3d from "./components43d/Book3d";
+// import Book3d from "./components43d/Book3d";
 
 function App() {
   const [showFullscreenVideo, setShowFullscreenVideo] = useState(true);
@@ -60,7 +60,7 @@ function App() {
       </div>
 
       {/* 3d book */}
-      <Book3d/>
+      {/* <Book3d/> */}
 
       {/* Contact and Footer Component */}
       <ContactFooter />
