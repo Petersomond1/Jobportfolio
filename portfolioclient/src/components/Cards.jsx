@@ -101,20 +101,20 @@ const Cards = () => {
         <p>🎯 <strong>Click the deck above to {isDeckSpread ? 'stack' : 'spread'} the cards!</strong></p>
       </div>
 
-      <p className="portfolio-description">
+      {/* <p className="portfolio-description">
         Click any card below to reveal detailed information about my skills and experience. Each suit represents a different aspect of my expertise.
-      </p>
+      </p> */}
 
       {/* Suit Legend */}
-      <div className="suit-legend">
+      {/* <div className="suit-legend">
         <div className="legend-item legend-hearts">♥ <strong>Hearts:</strong> Frontend Skills</div>
         <div className="legend-item legend-diamonds">♦ <strong>Diamonds:</strong> Projects</div>
         <div className="legend-item legend-clubs">♣ <strong>Clubs:</strong> Experience</div>
         <div className="legend-item legend-spades">♠ <strong>Spades:</strong> Backend Skills</div>
-      </div>
+      </div> */}
 
       {/* Cards Grid */}
-      <div className="cards-grid">
+      {/* <div className="cards-grid">
         {portfolioCards.map((card) => {
           const cardId = `${card.suit}-${card.value}`;
           return (
@@ -130,12 +130,12 @@ const Cards = () => {
             />
           );
         })}
-      </div>
+      </div> */}
 
       {/* Interactive Instructions */}
-      <div className="interactive-instructions">
+      {/* <div className="interactive-instructions">
         <p>💡 <strong>Tip:</strong> Hover over cards for preview, click to flip and see details!</p>
-      </div>
+      </div> */}
     </section>
   );
 };

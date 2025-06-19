@@ -21,11 +21,11 @@ const IntroVideo = ({ videoTransitioned }) => {
       className={`intro-video-section ${videoTransitioned ? 'visible' : 'hidden'}`}
     >
       <div className="intro-video-header">
-        <h2 className="intro-title">
+        <h3 className="intro-title">
           Welcome to My Portfolio
-        </h2>
-        <p className="intro-subtitle">
-          Get to know me through this introduction video
+        </h3>
+        <p className="intro-description">
+          This video showcases my journey, my passion for engineering and development, and my new zeal to break into creativity with software engineering.
         </p>
       </div>
 
@@ -46,14 +46,12 @@ const IntroVideo = ({ videoTransitioned }) => {
       </div>
 
       <div className="intro-video-footer">
-        <p className="intro-description">
-          This video showcases my journey and passion for engineering and development.
-        </p>
+       
         <button 
           className="explore-button"
           onClick={handleExploreClick}
         >
-          🚀 Explore My Work
+          🚀 Explore further
         </button>
       </div>
     </div>

@@ -1,0 +1,486 @@
+/* PortfolioMemoryGame.css - Fixed with isolated namespacing */
+
+.portfolio-memory-game-container {
+    /* Reset and isolate this component from global styles */
+    all: initial;
+    font-family: 'Arial', sans-serif;
+    
+    /* Component-specific styles */
+    padding: 20px;
+    background-color: #0f0f23;
+    min-height: 100vh;
+    color: white;
+    position: relative;
+    overflow: visible !important;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Game Header Styles */
+  .pmg-game-header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .pmg-game-title {
+    font-size: 2.5rem;
+    color: #00ff9d;
+    margin-bottom: 10px;
+    text-shadow: 0 0 20px rgba(0, 255, 157, 0.5);
+    animation: pmg-float 3s ease-in-out infinite;
+    font-weight: bold;
+  }
+  
+  @keyframes pmg-float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  .pmg-game-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #ccc;
+    max-width: 600px;
+    margin: 0 auto 20px;
+    line-height: 1.5;
+  }
+  
+  /* Game Stats */
+  .pmg-game-stats {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .pmg-stat-item {
+    padding: 10px 20px;
+    background-color: rgba(0, 255, 157, 0.1);
+    border-radius: 10px;
+    border: 2px solid #00ff9d;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  
+  /* Win Message */
+  .pmg-win-message {
+    padding: 20px;
+    background-color: rgba(0, 255, 157, 0.2);
+    border-radius: 15px;
+    border: 3px solid #00ff9d;
+    margin-bottom: 20px;
+    animation: pmg-pulse 2s infinite;
+    max-width: 600px;
+    margin: 0 auto 20px;
+  }
+  
+  @keyframes pmg-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+  
+  .pmg-win-title {
+    color: #00ff9d;
+    margin: 0 0 10px 0;
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+  
+  .pmg-win-text {
+    font-size: 1.3rem;
+    margin: 0;
+  }
+  
+  /* New Game Button */
+  .pmg-new-game-btn {
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    background-color: #00ff9d;
+    color: #0f0f23;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+  }
+  
+  .pmg-new-game-btn:hover {
+    background-color: #00cc7d;
+    transform: scale(1.05);
+  }
+  
+  /* Suit Legend */
+  .pmg-suit-legend {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    max-width: 800px;
+    margin: 0 auto 30px;
+    padding: 15px;
+    background-color: rgba(0, 255, 157, 0.1);
+    border-radius: 15px;
+    border: 2px solid #00ff9d;
+  }
+  
+  .pmg-legend-item {
+    font-weight: bold;
+    padding: 8px;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+    font-size: 1rem;
+  }
+  
+  .pmg-legend-item:hover {
+    transform: translateY(-2px);
+  }
+  
+  .pmg-legend-item.pmg-hearts {
+    color: #dc2626;
+    background-color: rgba(220, 38, 38, 0.1);
+  }
+  
+  .pmg-legend-item.pmg-diamonds {
+    color: #dc2626;
+    background-color: rgba(220, 38, 38, 0.1);
+  }
+  
+  .pmg-legend-item.pmg-clubs {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .pmg-legend-item.pmg-spades {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Game Instructions */
+  .pmg-game-instructions {
+    text-align: center;
+    margin-bottom: 30px;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 0 auto 30px;
+  }
+  
+  .pmg-instructions-title {
+    color: #00ff9d;
+    margin: 0 0 10px 0;
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+  
+  .pmg-instruction-item {
+    margin: 5px 0;
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+  
+  /* Game Board */
+  .pmg-game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    border: 2px solid rgba(0, 255, 157, 0.3);
+    justify-items: center;
+  }
+  
+  /* Card Container */
+  .pmg-card-container {
+    width: 140px;
+    height: 200px;
+    perspective: 1000px;
+    cursor: pointer !important;
+    position: relative;
+    user-select: none;
+  }
+  
+  .pmg-card-container.pmg-matched {
+    animation: pmg-glow 2s infinite;
+  }
+  
+  @keyframes pmg-glow {
+    0%, 100% { 
+      filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+    }
+    50% { 
+      filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
+    }
+  }
+  
+  /* Card */
+  .pmg-card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease-in-out;
+    transform-origin: center center;
+    cursor: pointer;
+  }
+  
+  .pmg-card.pmg-flipped {
+    transform: rotateY(180deg);
+  }
+  
+  /* Card Faces */
+  .pmg-card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+  }
+  
+  /* Playing Card Front */
+  .pmg-card-front {
+    background-color: #fff;
+    border: 3px solid #333;
+    transform: rotateY(0deg);
+  }
+  
+  /* Suit Colors */
+  .pmg-card-front.pmg-hearts,
+  .pmg-card-front.pmg-diamonds {
+    color: #dc2626;
+  }
+  
+  .pmg-card-front.pmg-hearts .pmg-card-center,
+  .pmg-card-front.pmg-diamonds .pmg-card-center {
+    color: #dc2626;
+  }
+  
+  .pmg-card-front.pmg-clubs,
+  .pmg-card-front.pmg-spades {
+    color: #000;
+  }
+  
+  .pmg-card-front.pmg-clubs .pmg-card-center,
+  .pmg-card-front.pmg-spades .pmg-card-center {
+    color: #000;
+  }
+  
+  .pmg-card-corner {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1rem;
+    line-height: 1.1;
+  }
+  
+  .pmg-card-corner.pmg-top-left {
+    align-self: flex-start;
+  }
+  
+  .pmg-card-corner.pmg-bottom-right {
+    align-self: flex-end;
+    transform: rotate(180deg);
+  }
+  
+  .pmg-card-value {
+    font-size: 1rem;
+    line-height: 1;
+    margin-bottom: 2px;
+    font-weight: bold;
+  }
+  
+  .pmg-card-suit {
+    font-size: 1.2rem;
+    line-height: 1;
+  }
+  
+  .pmg-card-center {
+    font-size: 4rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+  }
+  
+  /* Skill/Experience Back */
+  .pmg-card-back {
+    background-color: #1a1a2e;
+    border: 3px solid #00ff9d;
+    transform: rotateY(180deg);
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    padding: 15px;
+  }
+  
+  .pmg-card-container.pmg-matched .pmg-card-back {
+    border-color: #ffd700;
+    background-color: #2a2a3e;
+  }
+  
+  .pmg-skill-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #00ff9d;
+    line-height: 1.2;
+  }
+  
+  .pmg-skill-description {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    color: #ccc;
+    margin-bottom: 10px;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .pmg-skill-rating {
+    display: flex;
+    gap: 2px;
+    justify-content: center;
+    margin-top: auto;
+  }
+  
+  .pmg-star {
+    font-size: 0.8rem;
+    color: #444;
+  }
+  
+  .pmg-star.pmg-filled {
+    color: #ffd700;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .pmg-game-board {
+      max-width: 600px;
+      gap: 12px;
+    }
+    
+    .pmg-card-container {
+      width: 120px;
+      height: 170px;
+    }
+    
+    .pmg-card-center {
+      font-size: 3rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .portfolio-memory-game-container {
+      padding: 15px;
+    }
+    
+    .pmg-game-title {
+      font-size: 2rem;
+    }
+    
+    .pmg-game-subtitle {
+      font-size: 1rem;
+    }
+    
+    .pmg-game-stats {
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .pmg-suit-legend {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+      padding: 10px;
+    }
+    
+    .pmg-game-board {
+      max-width: 500px;
+      gap: 10px;
+      padding: 15px;
+    }
+    
+    .pmg-card-container {
+      width: 100px;
+      height: 140px;
+    }
+    
+    .pmg-card-center {
+      font-size: 2.5rem;
+    }
+    
+    .pmg-skill-title {
+      font-size: 0.9rem;
+    }
+    
+    .pmg-skill-description {
+      font-size: 0.7rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .pmg-game-title {
+      font-size: 1.8rem;
+    }
+    
+    .pmg-suit-legend {
+      grid-template-columns: 1fr;
+    }
+    
+    .pmg-game-board {
+      max-width: 400px;
+      gap: 8px;
+    }
+    
+    .pmg-card-container {
+      width: 80px;
+      height: 115px;
+    }
+    
+    .pmg-card-center {
+      font-size: 2rem;
+    }
+    
+    .pmg-card-value {
+      font-size: 0.8rem;
+    }
+    
+    .pmg-card-suit {
+      font-size: 1rem;
+    }
+    
+    .pmg-skill-title {
+      font-size: 0.8rem;
+    }
+    
+    .pmg-skill-description {
+      font-size: 0.6rem;
+    }
+    
+    .pmg-star {
+      font-size: 0.6rem;
+    }
+  }
+  
+  /* Force accessibility and ensure interactions work */
+  .pmg-card-container * {
+    pointer-events: none;
+  }
+  
+  .pmg-card-container {
+    pointer-events: all !important;
+  }

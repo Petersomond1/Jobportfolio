@@ -1,7 +1,7 @@
 /* Introduction Video Styles */
 .intro-video-section {
     width: 100%;
-    padding: 100px 10% 50px;
+    padding: 100px 10% 10px;
     background-color: var(--second-background);
     transition: opacity 1.5s ease-in, transform 1.5s ease-in;
   }
@@ -20,15 +20,25 @@
   
   .intro-video-header {
     text-align: center;
-    margin-bottom: 40px;
+    margin-top: 15px;
+    margin-bottom: 5px;
   }
   
   .intro-title {
     color: var(--primary-color);
-    font-size: 3em;
-    margin-bottom: 15px;
+    font-size: 2em;
+    margin-top: 5px;
+    margin-bottom: 5px;
     font-weight: bold;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .intro-description {
+    font-size: 1em;
+    max-width: auto;
+    margin: 0 auto 3px;
+    line-height: 1.6;
+    opacity: 0.9;
   }
   
   .intro-subtitle {
@@ -61,14 +71,7 @@
     color: white;
   }
   
-  .intro-description {
-    font-size: 1.2em;
-    margin-bottom: 30px;
-    max-width: 600px;
-    margin: 0 auto 30px;
-    line-height: 1.6;
-    opacity: 0.9;
-  }
+
   
   .explore-button {
     background-color: var(--primary-color);

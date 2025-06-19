@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./App.css";
+ import "./App.css";
 
 // Import the new modular components
 import Navigation from "./components/Navigation";
@@ -7,6 +7,7 @@ import TeaserVideo from "./components/TeaserVideo";
 import IntroVideo from "./components/IntroVideo";
 import MainContent from "./components/MainContent";
 import ContactFooter from "./components/ContactFooter";
+import Home from "./components/Home";
 // import Book3d from "./components43d/Book3d";
 
 function App() {
@@ -43,21 +44,32 @@ function App() {
 
   return (
     <>
+    <section>
       {/* Navigation Component */}
       <Navigation />
+      </section>
 
       {/* Fullscreen Teaser Video Component */}
       <TeaserVideo
         showFullscreenVideo={showFullscreenVideo}
         onHideVideo={() => setShowFullscreenVideo(false)}
       />
+      <section>
       {/* Introduction Video Component */}
       <IntroVideo videoTransitioned={videoTransitioned} />
+      </section>
+      <section>
+    {/* Home Section */}
+    <Home videoTransitioned={videoTransitioned} />
+      </section>
+      <section 
+      // className="container"
+      >
 
-      <div className="container">
+
       {/* Main Content Component */}
         <MainContent videoTransitioned={videoTransitioned} />
-      </div>
+      </section>
 
       {/* 3d book */}
       {/* <Book3d/> */}
