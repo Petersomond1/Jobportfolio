@@ -6,9 +6,10 @@ const portfolioData = [
     {
         title: "About Me",
         content: "I'm a passionate Software and Mechanical Engineer with expertise in modern web technologies and engineering solutions. My journey combines traditional engineering principles with cutting-edge software development.",
-        image: "https://via.placeholder.com/400x200/4f46e5/ffffff?text=About+Me",
+        image: "./assets/picturepax.jpg",
         skills: ["React", "JavaScript", "Node.js", "Python"]
     },
+    
     {
         title: "Frontend Skills", 
         content: "Specializing in modern frontend technologies and responsive design. I create intuitive user interfaces that provide exceptional user experiences across all devices.",

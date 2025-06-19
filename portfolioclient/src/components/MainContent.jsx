@@ -1,190 +1,43 @@
-import React from 'react';
-import Cards from './Cards';
-import Book from './Book';
-import Library from './Library';
-import './MainContent.css';
-import '../App.css'; 
+import React from "react";
+import Cards from "./Cards";
+import Book from "./Book";
+import Library from "./Library";
+import "./MainContent.css";
+import "../App.css";
 import Book3d from "../components43d/Book3d"; // Import the 3D book component
-import PortfolioMemoryGame from './PortfolioMemoryGame'; // Import the memory game component
-
+import PortfolioMemoryGame from "./PortfolioMemoryGame"; // Import the memory game component
 
 const MainContent = ({ videoTransitioned }) => {
   if (!videoTransitioned) return null;
 
-
-   // Handle book click to scroll to Book1 section
-   const handleBookClick = (bookIndex) => {
-    const bookSection = document.getElementById('book-section');
+  // Handle book click to scroll to Book1 section
+  const handleBookClick = (bookIndex) => {
+    const bookSection = document.getElementById("book-section");
     if (bookSection) {
-      bookSection.scrollIntoView({ behavior: 'smooth' });
+      bookSection.scrollIntoView({ behavior: "smooth" });
     }
   };
-  // Handle library click to scroll to library section
-  const handleLibraryClick = () => {
-    const librarySection = document.getElementById('library-section');
-    if (librarySection) {
-      librarySection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };  
 
   return (
-    < 
-    // className='content-body'
-    >
+    < >
       {/* Portfolio Cards Section */}
-      <Cards/>
-      <hr className="hr" style={{ marginTop: '25px', marginBottom: '25px' }} />
+      <Cards />
+      <hr className="hr" style={{ marginTop: "25px", marginBottom: "25px" }} />
       {/* Portfolio Memory Game Section */}
       <PortfolioMemoryGame />
-       {/* Library Section */}
-       <Library onBookClick={handleBookClick} />
-      <hr className="hr" style={{ marginTop: '25px', marginBottom: '25px' }} />
-     <section style={{height: '650px'}} id='book-section'>
-     <Book3d/>
-
-     </section>
-      <hr className="hr" style={{ marginTop: '25px', marginBottom: '25px' }} />
+      {/* Library Section */}
+      <Library onBookClick={handleBookClick} />
+      <hr className="hr" style={{ marginTop: "25px", marginBottom: "25px" }} />
+      <section style={{ height: "650px" }} id="book-section">
+      <Book3d />
+      </section>
+      <hr className="hr" style={{ marginTop: "25px", marginBottom: "25px" }} />
       {/* <div className='container'> */}
-      <Book/>
-      {/* </div> */}
-
-      <hr className="hr" style={{ marginTop: '25px', marginBottom: '25px' }} />
-      
+      <Book />
+      <hr className="hr" style={{ marginTop: "25px", marginBottom: "25px" }} />
       {/* About Section */}
       <section>
-        <div className="about-box" id="about">
-          <div className="about-info">
-            <h2><span>About Engr. Mondayp</span></h2>
-          </div>
-        
-          <div className="skills-heading">
-            <h3>Frontend Development Skills</h3>
-          </div>
-
-          <div className='skills'>
-            <li><span><i className='bx bx-chevron-right'></i> HTML</span></li>
-            <li><span><i className='bx bx-chevron-right'></i> JavaScript</span></li>
-            <li><span><i className='bx bx-chevron-right'></i> React</span></li>
-            <li><span><i className='bx bx-chevron-right'></i> CSS</span></li> 
-            <li><span><i className='bx bx-chevron-right'></i> Bootstrap</span></li>
-            <li><span><i className='bx bx-chevron-right'></i> Tailwind</span></li>
-            <li><span><i className='bx bx-chevron-right'></i> Material-UI</span></li>
-          </div>
-
-          <div className="skills-heading">
-            <h3>Backend Development Skills</h3>
-          </div>
-
-          <div className='skills'>
-            <span><i className='bx bx-chevron-right'></i> Node.js </span>
-            <span><i className='bx bx-chevron-right'></i> Express</span>
-            <span><i className='bx bx-chevron-right'></i> MySQL</span>
-            <span><i className='bx bx-chevron-right'></i> APIs</span> 
-            <span><i className='bx bx-chevron-right'></i> MongoDB</span>
-            <span><i className='bx bx-chevron-right'></i> AWS</span>
-            <span><i className='bx bx-chevron-right'></i> Firebase</span>
-          </div>
-
-          <div className="skills-heading">
-            <h3>FullStack Development Skills</h3>
-          </div>
-
-          <div className='skills'>
-            <ul>
-              <li><span><i className='bx bx-chevron-right'></i> GitHub</span></li> 
-              <li><span><i className='bx bx-chevron-right'></i> Git</span></li> 
-              <li><span><i className='bx bx-chevron-right'></i> Heroku</span></li>
-              <li><span><i className='bx bx-chevron-right'></i> Netlify</span></li> 
-            </ul>
-            <ul> 
-              <li><span><i className='bx bx-chevron-right'></i> Adobe XD</span></li> 
-              <li><span><i className='bx bx-chevron-right'></i> Trello</span></li> 
-              <li><span><i className='bx bx-chevron-right'></i> Slack</span></li> 
-              <li><span><i className='bx bx-chevron-right'></i> Figma</span></li> 
-            </ul>
-          </div> 
-          <img src="./assets/picturepax.jpg" alt="" className='about-image' />
-        </div>
-      </section>
-
-      {/* Techs & Services Section */}
-      <section className="techs-Services" id="techs-Services">
-        <h1 className='header'><span>Techs & Services</span></h1>
-        <h3 className='skills-smallheader'><span> Links to Videos to Showcase use of skill </span></h3>
-          
-        <div className='skills'>
-          <ul>
-            <li><span><i className='bx bx-chevron-right'></i>React.js</span></li>
-            <p>abc</p><p>abc</p><p>abc</p>
-            <li><span><i className='bx bx-chevron-right'></i>JavaScript</span></li>
-            <p>abc</p><p>abc</p><p>abc</p>
-            <li><span><i className='bx bx-chevron-right'></i>HTML/CSS</span></li>
-            <p>abc</p><p>abc</p><p>abc</p>
-          </ul>
-          <ul>
-            <li><span><i className='bx bx-chevron-right'></i>Tailwind</span></li>
-            <p>abc</p><p>abc</p><p>abc</p>
-            <li><span><i className='bx bx-chevron-right'></i>BootStrap</span></li>
-            <p>abc</p><p>abc</p><p>abc</p>
-            <li><span><i className='bx bx-chevron-right'></i> Material-UI</span></li>
-            <p>abc</p><p>abc</p><p>abc</p>
-          </ul>
-          <ul>
-            <li><span><i className='bx bx-chevron-right'></i>  Node.js</span></li>
-            <p>abc</p><p>abc</p><p>abc</p>
-            <li><span><i className='bx bx-chevron-right'></i> Express</span></li>
-            <p>abc</p><p>abc</p><p>abc</p>
-            <li><span><i className='bx bx-chevron-right'></i> MySQL</span></li>
-            <p>abc</p><p>abc</p><p>abc</p>
-          </ul>
-          <ul>
-            <li><span><i className='bx bx-chevron-right'></i>  RESTful APIs</span></li>
-            <p>abc</p><p>abc</p><p>abc</p>
-            <li><span><i className='bx bx-chevron-right'></i> MongoDB</span></li>
-            <p>abc</p><p>abc</p><p>abc</p>
-            <li><span><i className='bx bx-chevron-right'></i> Firebase</span></li>
-            <p>abc</p><p>abc</p><p>abc</p>
-          </ul>
-          <ul>
-            <li><span><i className='bx bx-chevron-right'></i>  GitHub</span></li>
-            <p>abc</p><p>abc</p><p>abc</p>
-            <li><span><i className='bx bx-chevron-right'></i>Git</span></li>
-            <p>abc</p><p>abc</p><p>abc</p>
-            <li><span><i className='bx bx-chevron-right'></i> Figma</span></li>
-            <p>abc</p><p>abc</p><p>abc</p>
-          </ul>
-          <ul>
-            <li><span><i className='bx bx-chevron-right'></i>  Hereku</span></li>
-            <p>abc</p><p>abc</p><p>abc</p>
-            <li><span><i className='bx bx-chevron-right'></i> Netlify</span></li>
-            <p>abc</p><p>abc</p><p>abc</p>
-            <li><span><i className='bx bx-chevron-right'></i> Adobe XD</span></li>
-            <p>abc</p><p>abc</p><p>abc</p>
-          </ul>
-        </div>
-
-        <div className="techs-Services-container">
-          <div className="box">
-            <h1><span>Web Design</span></h1>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis nam dolores natus fugit possimus quod commodi modi repudiandae et ipsum corporis blanditiis molestias deserunt eveniet quis, fugiat quidem? Dolorum, commodi?</p>
-            <img src="./assets/pix.JPG" alt="" />
-          </div>
-          <div className="box">
-            <h1><span>Web Design</span></h1>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis nam dolores natus fugit possimus quod commodi modi repudiandae et ipsum corporis blanditiis molestias deserunt eveniet quis, fugiat quidem? Dolorum, commodi?</p>
-            <img src="./assets/pix.JPG" alt="" />
-          </div>
-          <div className="box">
-            <h1><span>Web Design</span></h1>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis nam dolores natus fugit possimus quod commodi modi repudiandae et ipsum corporis blanditiis molestias deserunt eveniet quis, fugiat quidem? Dolorum, commodi?</p>
-            <img src="./assets/pix.JPG" alt="" />
-          </div>
-          <div className="box">
-            <h1><span>Web Design</span></h1>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis nam dolores natus fugit possimus quod commodi modi repudiandae et ipsum corporis blanditiis molestias deserunt eveniet quis, fugiat quidem? Dolorum, commodi?</p>
-            <img src="./assets/pix.JPG" alt="" />
-          </div>
-        </div>
+       
       </section>
     </>
   );

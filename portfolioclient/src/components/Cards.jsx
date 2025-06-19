@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import PlayingCard from './PlayingCard';
+// import PlayingCard from './PlayingCard';
 import DeckCard from './DeckCard';
 import './Cards.css';
 
 // Main Cards Component
 const Cards = () => {
-  const [flippedCards, setFlippedCards] = useState(new Set());
+  // const [flippedCards, setFlippedCards] = useState(new Set());
   const [isDeckSpread, setIsDeckSpread] = useState(false);
+  const [selectedCardIndex, setSelectedCardIndex] = useState(null);
+  const [displayedCard, setDisplayedCard] = useState(null);
 
   // Deck cards data (4 Aces + 2 Jokers)
   const deckCards = [
@@ -17,15 +19,6 @@ const Cards = () => {
     { title: 'Red Joker', isJoker: true, jokerColor: 'red' },
     { title: 'Black Joker', isJoker: true, jokerColor: 'black' }
   ];
-
-  // Auto-spread animation after component mounts
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsDeckSpread(true);
-    }, 1000); // Wait 1 second then spread
-
-    return () => clearTimeout(timer);
-  }, []);
 
   // Portfolio cards data
   const portfolioCards = [
@@ -54,18 +47,70 @@ const Cards = () => {
     { suit: 'spades', value: 13, title: 'APIs/Auth', description: 'RESTful APIs, JWT authentication, and secure backend development practices.', skillLevel: 4 }
   ];
 
-  const handleCardClick = (cardId) => {
-    const newFlipped = new Set(flippedCards);
-    if (newFlipped.has(cardId)) {
-      newFlipped.delete(cardId);
-    } else {
-      newFlipped.add(cardId);
+  // Auto-spread animation after component mounts
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsDeckSpread(true);
+    }, 1000); // Wait 1 second then spread
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Set default displayed card when deck spreads
+  useEffect(() => {
+    if (isDeckSpread && !displayedCard) {
+      // Show the first portfolio card (React.js) as default
+      setDisplayedCard(portfolioCards[0]);
+      setSelectedCardIndex(0);
+    } else if (!isDeckSpread) {
+      // Clear displayed card when deck is stacked
+      setDisplayedCard(null);
+      setSelectedCardIndex(null);
     }
-    setFlippedCards(newFlipped);
-  };
+  }, [isDeckSpread]);
 
   const handleDeckClick = () => {
     setIsDeckSpread(!isDeckSpread);
+  };
+
+  // Handle individual card clicks when deck is spread
+  const handleCardClick = (cardIndex, event) => {
+    if (isDeckSpread) {
+      event.stopPropagation(); // Prevent deck click event
+      
+      // Map deck card to portfolio card
+      const portfolioCardIndex = getPortfolioCardIndex(cardIndex);
+      if (portfolioCardIndex !== -1) {
+        setDisplayedCard(portfolioCards[portfolioCardIndex]);
+        setSelectedCardIndex(portfolioCardIndex);
+      }
+    }
+  };
+
+  // Map deck card index to portfolio card index
+  const getPortfolioCardIndex = (deckCardIndex) => {
+    const deckCard = deckCards[deckCardIndex];
+    
+    if (deckCard.isJoker) {
+      // For jokers, show a special message or return -1
+      return -1;
+    }
+    
+    // Map suit to portfolio category
+    const suitToStartIndex = {
+      'hearts': 0,   // Frontend Skills (indices 0-3)
+      'diamonds': 4, // Projects (indices 4-7)
+      'clubs': 8,    // Experience (indices 8-11)
+      'spades': 12   // Backend Skills (indices 12-15)
+    };
+    
+    const startIndex = suitToStartIndex[deckCard.suit];
+    return startIndex; // Return the first card of each suit for simplicity
+  };
+
+  // Render skill level stars
+  const renderSkillLevel = (level) => {
+    return '⭐'.repeat(level) + '☆'.repeat(5 - level);
   };
 
   return (
@@ -90,52 +135,46 @@ const Cards = () => {
               jokerColor={card.jokerColor}
               index={index}
               isSpread={isDeckSpread}
-              onClick={handleDeckClick}
+              onClick={(event) => handleCardClick(index, event)}
+              isSelected={selectedCardIndex === getPortfolioCardIndex(index)}
             />
           ))}
         </div>
       </div>
 
+      {/* Dynamic Portfolio Card Display */}
+      <div className="portfolio-display">
+        {isDeckSpread && displayedCard ? (
+          <div className="displayed-card">
+            <h3 className="card-title">{displayedCard.title}</h3>
+            <p className="card-description">{displayedCard.description}</p>
+            <div className="card-skill-level">
+              <span className="skill-label">Skill Level: </span>
+              <span className="skill-stars">{renderSkillLevel(displayedCard.skillLevel)}</span>
+            </div>
+          </div>
+        ) : isDeckSpread ? (
+          <div className="displayed-card">
+            <h3 className="card-title">Select a Card</h3>
+            <p className="card-description">Click on any card above to see detailed information about my skills and experience.</p>
+          </div>
+        ) : (
+          <div className="displayed-card stacked">
+            <h3 className="card-title">Deck Stacked</h3>
+            <p className="card-description">Click the deck to spread the cards and explore my portfolio!</p>
+          </div>
+        )}
+      </div>
+
       {/* Instructions for deck animation */}
       <div className="deck-instructions">
         <p>🎯 <strong>Click the deck above to {isDeckSpread ? 'stack' : 'spread'} the cards!</strong></p>
+        {isDeckSpread && (
+          <p className="card-click-instruction">
+            💡 <strong>Click individual cards to see detailed information!</strong>
+          </p>
+        )}
       </div>
-
-      {/* <p className="portfolio-description">
-        Click any card below to reveal detailed information about my skills and experience. Each suit represents a different aspect of my expertise.
-      </p> */}
-
-      {/* Suit Legend */}
-      {/* <div className="suit-legend">
-        <div className="legend-item legend-hearts">♥ <strong>Hearts:</strong> Frontend Skills</div>
-        <div className="legend-item legend-diamonds">♦ <strong>Diamonds:</strong> Projects</div>
-        <div className="legend-item legend-clubs">♣ <strong>Clubs:</strong> Experience</div>
-        <div className="legend-item legend-spades">♠ <strong>Spades:</strong> Backend Skills</div>
-      </div> */}
-
-      {/* Cards Grid */}
-      {/* <div className="cards-grid">
-        {portfolioCards.map((card) => {
-          const cardId = `${card.suit}-${card.value}`;
-          return (
-            <PlayingCard
-              key={cardId}
-              suit={card.suit}
-              value={card.value}
-              title={card.title}
-              description={card.description}
-              skillLevel={card.skillLevel}
-              isFlipped={flippedCards.has(cardId)}
-              onClick={() => handleCardClick(cardId)}
-            />
-          );
-        })}
-      </div> */}
-
-      {/* Interactive Instructions */}
-      {/* <div className="interactive-instructions">
-        <p>💡 <strong>Tip:</strong> Hover over cards for preview, click to flip and see details!</p>
-      </div> */}
     </section>
   );
 };

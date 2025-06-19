@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
- import "./App.css";
+import "./App.css";
 
 // Import the new modular components
 import Navigation from "./components/Navigation";
@@ -8,7 +8,6 @@ import IntroVideo from "./components/IntroVideo";
 import MainContent from "./components/MainContent";
 import ContactFooter from "./components/ContactFooter";
 import Home from "./components/Home";
-// import Book3d from "./components43d/Book3d";
 
 function App() {
   const [showFullscreenVideo, setShowFullscreenVideo] = useState(true);
@@ -44,9 +43,9 @@ function App() {
 
   return (
     <>
-    <section>
-      {/* Navigation Component */}
-      <Navigation />
+      <section>
+        {/* Navigation Component */}
+        <Navigation />
       </section>
 
       {/* Fullscreen Teaser Video Component */}
@@ -55,25 +54,19 @@ function App() {
         onHideVideo={() => setShowFullscreenVideo(false)}
       />
       <section>
-      {/* Introduction Video Component */}
-      <IntroVideo videoTransitioned={videoTransitioned} />
+        {/* Introduction Video Component */}
+        <IntroVideo videoTransitioned={videoTransitioned} />
       </section>
       <section>
-    {/* Home Section */}
-    <Home videoTransitioned={videoTransitioned} />
+        {/* Home Section */}
+        <Home videoTransitioned={videoTransitioned} />
       </section>
-      <section 
+      <section
       // className="container"
       >
-
-
-      {/* Main Content Component */}
+        {/* Main Content Component */}
         <MainContent videoTransitioned={videoTransitioned} />
       </section>
-
-      {/* 3d book */}
-      {/* <Book3d/> */}
-
       {/* Contact and Footer Component */}
       <ContactFooter />
     </>

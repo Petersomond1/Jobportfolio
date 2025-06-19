@@ -2,7 +2,7 @@ import React from 'react';
 import './DeckCard.css';
 
 // Deck Card Component for the animated cards
-const DeckCard = ({ suit, value, title, isJoker = false, jokerColor = 'red', index, isSpread, onClick }) => {
+const DeckCard = ({ suit, value, isJoker = false, jokerColor = 'red', index, isSpread, onClick }) => {
   const getSuitSymbol = (suit) => {
     const symbols = {
       hearts: '♥',

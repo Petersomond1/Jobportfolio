@@ -1,14 +1,14 @@
 /* Cards.css - Main Component Layout Styles */
 
 .portfolio-cards-section {
-  padding: 60px 5%;
+  padding: 30px 5%;
   background-color: var(--third-background);
   text-align: center;
-  min-height: 100vh;
+  min-height: auto;
 }
 
 .portfolio-header {
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   color: var(--primary-color);
   font-size: 2.5rem;
   font-weight: bold;
@@ -29,7 +29,7 @@
 .deck-container {
   position: relative;
   height: 300px;
-  margin: 40px auto;
+  margin: 20px auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,13 +48,89 @@
   transform: scale(1.02);
 }
 
+/* Portfolio Display Section */
+.portfolio-display {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(0, 255, 157, 0.1), rgba(0, 255, 157, 0.05));
+  border: 2px solid var(--primary-color);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.displayed-card {
+  color: white;
+  text-align: center;
+  animation: slideIn 0.5s ease-out;
+}
+
+.displayed-card.stacked {
+  opacity: 0.7;
+}
+
+.card-title {
+  color: var(--primary-color);
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.card-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.card-skill-level {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.skill-label {
+  font-weight: 600;
+  color: var(--primary-color);
+  font-size: 1rem;
+}
+
+.skill-stars {
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Instructions */
 .deck-instructions {
   color: var(--primary-color);
   font-size: 1.1em;
-  margin-bottom: 40px;
+  margin-bottom: 5px;
   font-weight: 600;
   animation: pulse 2s infinite;
+}
+
+.card-click-instruction {
+  color: var(--primary-color);
+  font-size: 1rem;
+  margin-top: 10px;
+  font-weight: 500;
+  animation: glow 2s ease-in-out infinite alternate;
 }
 
 @keyframes pulse {
@@ -62,12 +138,21 @@
   50% { opacity: 0.7; }
 }
 
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px var(--primary-color);
+  }
+  to {
+    text-shadow: 0 0 20px var(--primary-color), 0 0 30px var(--primary-color);
+  }
+}
+
 .portfolio-description {
   color: white;
   font-size: 1.2em;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   max-width: 800px;
-  margin: 0 auto 40px;
+  margin: 0 auto 20px;
   line-height: 1.6;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
@@ -168,6 +253,19 @@
     height: 220px;
   }
   
+  .portfolio-display {
+    max-width: 500px;
+    padding: 18px;
+  }
+  
+  .card-title {
+    font-size: 1.6rem;
+  }
+  
+  .card-description {
+    font-size: 1rem;
+  }
+  
   .cards-grid {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 15px;
@@ -194,6 +292,35 @@
     height: 200px;
   }
   
+  .portfolio-display {
+    max-width: 400px;
+    padding: 15px;
+    margin: 25px auto;
+  }
+  
+  .card-title {
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+  }
+  
+  .card-description {
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+  }
+  
+  .card-skill-level {
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .skill-label {
+    font-size: 0.9rem;
+  }
+  
+  .skill-stars {
+    font-size: 1rem;
+  }
+  
   .portfolio-description {
     font-size: 1em;
     margin-bottom: 30px;
@@ -212,6 +339,10 @@
   
   .deck-instructions {
     font-size: 1em;
+  }
+  
+  .card-click-instruction {
+    font-size: 0.9rem;
   }
   
   .interactive-instructions {
@@ -238,6 +369,20 @@
     height: 150px;
   }
   
+  .portfolio-display {
+    max-width: 300px;
+    padding: 12px;
+    margin: 20px auto;
+  }
+  
+  .card-title {
+    font-size: 1.2rem;
+  }
+  
+  .card-description {
+    font-size: 0.9rem;
+  }
+  
   .suit-legend {
     grid-template-columns: 1fr;
     gap: 10px;
@@ -253,8 +398,10 @@
 @media (prefers-reduced-motion: reduce) {
   .portfolio-header span,
   .deck-instructions,
+  .card-click-instruction,
   .deck_of_cards,
-  .legend-item {
+  .legend-item,
+  .displayed-card {
     animation: none;
   }
   
@@ -266,6 +413,10 @@
 
 /* High contrast mode */
 @media (prefers-contrast: high) {
+  .portfolio-display {
+    border: 3px solid var(--primary-color);
+  }
+  
   .suit-legend {
     border: 3px solid var(--primary-color);
   }
