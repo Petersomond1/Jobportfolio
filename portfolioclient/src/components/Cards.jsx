@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 // import PlayingCard from './PlayingCard';
 import DeckCard from './DeckCard';
 import './Cards.css';
@@ -9,6 +9,8 @@ const Cards = () => {
   const [isDeckSpread, setIsDeckSpread] = useState(false);
   const [selectedCardIndex, setSelectedCardIndex] = useState(null);
   const [displayedCard, setDisplayedCard] = useState(null);
+  const deckRef = useRef(null);
+  const portfolioSectionRef = useRef(null);
 
   // Deck cards data (4 Aces + 2 Jokers)
   const deckCards = [
@@ -69,6 +71,27 @@ const Cards = () => {
     }
   }, [isDeckSpread]);
 
+  // Handle clicks outside the deck to stack cards
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isDeckSpread && 
+          deckRef.current && 
+          !deckRef.current.contains(event.target) &&
+          portfolioSectionRef.current &&
+          portfolioSectionRef.current.contains(event.target)) {
+        setIsDeckSpread(false);
+      }
+    };
+
+    // Add event listener to document
+    document.addEventListener('mousedown', handleClickOutside);
+    
+    // Cleanup event listener on component unmount
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isDeckSpread]);
+
   const handleDeckClick = () => {
     setIsDeckSpread(!isDeckSpread);
   };
@@ -114,7 +137,7 @@ const Cards = () => {
   };
 
   return (
-    <section id="portfolio-cards" className="portfolio-cards-section">
+    <section id="portfolio-cards" className="portfolio-cards-section" ref={portfolioSectionRef}>
       <h1 className="portfolio-header">
         <span>🎴 My Skills & Experience Deck</span>
       </h1>
@@ -123,6 +146,7 @@ const Cards = () => {
       <div className="deck-container">
         <div 
           className="deck_of_cards"
+          ref={deckRef}
           onClick={handleDeckClick}
         >
           {deckCards.map((card, index) => (
@@ -170,9 +194,14 @@ const Cards = () => {
       <div className="deck-instructions">
         <p>🎯 <strong>Click the deck above to {isDeckSpread ? 'stack' : 'spread'} the cards!</strong></p>
         {isDeckSpread && (
-          <p className="card-click-instruction">
-            💡 <strong>Click individual cards to see detailed information!</strong>
-          </p>
+          <>
+            <p className="card-click-instruction">
+              💡 <strong>Click individual cards to see detailed information!</strong>
+            </p>
+            <p className="outside-click-instruction">
+              👆 <strong>Click anywhere outside the cards to stack them back!</strong>
+            </p>
+          </>
         )}
       </div>
     </section>
